@@ -22,7 +22,7 @@ app.get('/mean', function(req, res){
     let nums = req.query.nums.split(','); //comes in as one string - split into an array of strings
     let newNums = stringsToNums(nums); //makes into an array of numbers instead of  strings
     if (newNums instanceof Error) {
-        throw new ExpressError(nums.message, 400);
+        throw new ExpressError(newNums.message, 400);
       }
 
     let mean = math.mean(newNums);
@@ -41,7 +41,7 @@ app.get('/median', function(req, res){
     let nums = req.query.nums.split(','); //comes in as a string - split into an array of strings
     let newNums = stringsToNums(nums);
     if (newNums instanceof Error) {
-        throw new ExpressError(nums.message, 400);
+        throw new ExpressError(newNums.message, 400);
       }
 
     let median = math.median(newNums);
@@ -58,7 +58,7 @@ app.get('/mode', function(req, res){
     let nums = req.query.nums.split(','); //comes in as a string - split into an array of strings
     let newNums = stringsToNums(nums);
     if (newNums instanceof Error) {
-        throw new ExpressError(nums.message,400);
+        throw new ExpressError(newNums.message,400);
       }
 
     let mode = math.mode(newNums);
@@ -75,7 +75,7 @@ app.get('/all', function(req, res){
     let nums = req.query.nums.split(','); //comes in as a string - split into an array of strings
     let newNums = stringsToNums(nums);
     if (newNums instanceof Error) {
-        throw new ExpressError(nums.message), 400;
+        throw new ExpressError(newNums.message, 400);
       }
       
     let mode = math.mode(newNums);
