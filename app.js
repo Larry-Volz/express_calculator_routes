@@ -1,6 +1,6 @@
 const process = require('process');
 const express = require('express');
-const math = require('mathjs');
+const math = require('mathjs');  //had to cache clean and npm reinstall express and mathjs for this
 const { stringsToNums } = require('./helpers');
 
 app = express();
@@ -14,12 +14,14 @@ app.get('/', function(req,res){
 
 app.get('/mean', function(req, res){
 
-    let nums = req.query.nums.split(','); //comes in as a string - split into an array of strings
-    let newNums = stringsToNums(nums);
+    let nums = req.query.nums.split(','); //comes in as one string - split into an array of strings
+    let newNums = stringsToNums(nums); //makes into an array of numbers instead of  strings
     let mean = math.mean(newNums);
 
-    return res.json({operation: "mean",
-value: mean});
+    return res.json({
+        operation: "mean",
+        value: mean
+    });
 })
 
 app.get('/median', function(req, res){
